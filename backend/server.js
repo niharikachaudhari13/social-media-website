@@ -22,16 +22,19 @@ const __dirname = path.resolve();
 if (process.env.NODE_ENV === "production") {
 	app.use(
 		cors({
-			origin: [process.env.FRONTEND_URL, "https://your-frontend-app.onrender.com"],
+			origin: [process.env.FRONTEND_URL, "https://social-media-website-frontend-s8nm.onrender.com"],
 			credentials: true,
 		})
 	);
 } else {
 	app.use(
 		cors({
-			origin: "http://localhost:5173",
-			credentials: true,
-		})
+  origin: [
+    "http://localhost:5173",
+    "https://social-media-website-frontend-s8nm.onrender.com"
+  ],
+  credentials: true,
+})
 	);
 }
 
