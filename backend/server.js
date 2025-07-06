@@ -18,22 +18,26 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
 
-// CORS configuration for production
-if (process.env.NODE_ENV === "production") {
-	app.use(
-		cors({
-			origin: [process.env.FRONTEND_URL, "https://social-media-website-frontend-s8nm.onrender.com"],
-			credentials: true,
-		})
-	);
-} else {
-	app.use(
-		cors({
-			origin: "http://localhost:5173",
-			credentials: true,
-		})
-	);
-}
+// CORS configuration for production and development
+const allowedOrigins = [
+	"http://localhost:5173",
+	"https://social-media-website-frontend-s8nm.onrender.com"
+];
+
+app.use(
+	cors({
+		origin: function (origin, callback) {
+			// allow requests with no origin (like mobile apps, curl, etc.)
+			if (!origin) return callback(null, true);
+			if (allowedOrigins.includes(origin)) {
+				return callback(null, true);
+			} else {
+				return callback(new Error('Not allowed by CORS'));
+			}
+		},
+		credentials: true,
+	})
+);
 
 app.use(express.json({ limit: "5mb" })); // parse JSON request bodies
 app.use(cookieParser());
