@@ -29,17 +29,19 @@ if (process.env.NODE_ENV === "production") {
 } else {
 	app.use(
 		cors({
-  origin: [
-    "http://localhost:5173",
-    "https://social-media-website-frontend-s8nm.onrender.com"
-  ],
-  credentials: true,
-})
+			origin: "http://localhost:5173",
+			credentials: true,
+		})
 	);
 }
 
 app.use(express.json({ limit: "5mb" })); // parse JSON request bodies
 app.use(cookieParser());
+
+// Add a root route for a friendly message
+app.get('/', (req, res) => {
+	res.send('Backend API is running!');
+});
 
 // API routes
 app.use("/api/v1/auth", authRoutes);
