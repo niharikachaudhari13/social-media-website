@@ -2,7 +2,6 @@ services:
   - type: web
     name: social-media-backend
     env: node
-    plan: free
     buildCommand: npm install
     startCommand: npm start
     rootDir: backend
@@ -33,7 +32,6 @@ services:
   - type: web
     name: social-media-frontend
     env: static
-    plan: free
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     rootDir: frontend
@@ -44,7 +42,6 @@ services:
   - type: web
     name: social-media-post-generator
     env: python
-    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn main:app
     rootDir: project-genai-post-generator-main
