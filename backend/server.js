@@ -29,9 +29,12 @@ if (process.env.NODE_ENV === "production") {
 } else {
 	app.use(
 		cors({
-			origin: "http://localhost:5173",
-			credentials: true,
-		})
+  origin: [
+    "http://localhost:5173",
+    "https://social-media-website-frontend-s8nm.onrender.com"
+  ],
+  credentials: true,
+})
 	);
 }
 
