@@ -30,8 +30,10 @@ services:
       - key: FRONTEND_URL
         sync: false
 
-  - type: static
+  - type: web
     name: social-media-frontend
+    env: static
+    plan: free
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     rootDir: frontend
@@ -50,4 +52,4 @@ services:
       - key: FLASK_ENV
         value: production
       - key: GROQ_API_KEY
-        sync: false 
+        sync: false
