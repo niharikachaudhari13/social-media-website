@@ -1,0 +1,53 @@
+services:
+  - type: web
+    name: social-media-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    rootDir: backend
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: MAILTRAP_HOST
+        sync: false
+      - key: MAILTRAP_PORT
+        sync: false
+      - key: MAILTRAP_USER
+        sync: false
+      - key: MAILTRAP_PASS
+        sync: false
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_URL
+        sync: false
+
+  - type: static
+    name: social-media-frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    rootDir: frontend
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+
+  - type: web
+    name: social-media-post-generator
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn main:app
+    rootDir: project-genai-post-generator-main
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: GROQ_API_KEY
+        sync: false 
