@@ -13,7 +13,7 @@ import connectionRoutes from "./routes/connection.route.js";
 import { connectDB } from "./lib/db.js";
 
 dotenv.config();
-
+app.set('trust proxy', 1);
 const app = express();
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
