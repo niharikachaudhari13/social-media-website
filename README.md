@@ -1,4 +1,6 @@
 🌐 Social Media Website
+
+
 A full-stack social media platform built using the MERN stack (MongoDB, Express.js, React, Node.js) that enables users to create profiles, connect with others, post updates, and interact with content—mimicking core functionalities of modern social platforms like LinkedIn or Facebook.
 
 🚀 Features
@@ -39,6 +41,9 @@ Image and video uploads with preview support
 Fully mobile-friendly UI using Tailwind CSS
 
 🛠️ Tech Stack
+
+
+
 🔹 Frontend
 React.js (with Hooks and Context API)
 
@@ -49,6 +54,7 @@ Tailwind CSS for styling
 Axios for API calls
 
 🔹 Backend
+
 Node.js
 
 Express.js
@@ -58,8 +64,6 @@ MongoDB with Mongoose ODM
 Cloudinary for media uploads
 
 JWT for authentication
-
-Multer for file handling
 
 
 
@@ -86,16 +90,23 @@ cd client
 npm install
 # Create .env.local with NEXT_PUBLIC_API_BASE_URL
 npm start
+
+
 ✅ Environment Variables
 Backend (server/.env):
 env
 Copy
 Edit
 MONGO_URI=your_mongodb_connection
+
 JWT_SECRET=your_jwt_secret
+
 CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+
 CLOUDINARY_API_KEY=your_api_key
+
 CLOUDINARY_API_SECRET=your_api_secret
+
 Frontend (client/.env.local):
 env
 Copy
